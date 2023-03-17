@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="course_options" >
+        <item>Computer Science</item>
+        <item>IT</item>
+        <item>GeGIS</item>
+        <item>GIS</item>
+        <item>Mechatronics</item>
+        <item>Civil Engineering</item>
+    </string-array>
+    <string-array name="department_options" >
+
+    </string-array>
+    <string-array name="school_options" >
+        <item>School of Science</item>
+        <item>Institute of IGGres</item>
+        <item>School of Engineering</item>
+    </string-array>
+    <string-array name="course_array" />
+    <string-array name="year_array" >
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="semester_array" >
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

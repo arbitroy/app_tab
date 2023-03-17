@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341871832838",
+    "project_id": "app-tab-fc34c",
+    "storage_bucket": "app-tab-fc34c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341871832838:android:6198d6c15d319b827f3887",
+        "android_client_info": {
+          "package_name": "dev.ndauwa.app_tab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341871832838-e9ie0m0pulck4b064vd3662kbbqtcrr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp_vQHgsPvfSsxBYz37wWVOEqJb6_92CM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341871832838-e9ie0m0pulck4b064vd3662kbbqtcrr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
