@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 
 public class PersonalDetails extends Fragment {
@@ -41,9 +44,9 @@ public class PersonalDetails extends Fragment {
     private String id;
     private String reg;
     private String gender;
-    final String[] selectedDepartment = {""};
-    final String[] selectedCourse = new String[1];
-    final String[] selectedSchool = {""};
+    private String selectedDepartment;
+    private String selectedCourse;
+    private String selectedSchool;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase = database.getReference();
     @Nullable
@@ -52,6 +55,45 @@ public class PersonalDetails extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.personal, container, false);
         initialiseComponets(view);
+        course.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Get the selected item's text
+                String selectedItemText = parentView.getItemAtPosition(position).toString();
+                selectedCourse = selectedItemText;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Get the selected item's text
+                String selectedItemText = parentView.getItemAtPosition(position).toString();
+                selectedDepartment = selectedItemText;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Toast.makeText(getContext(),"nothing" , Toast.LENGTH_LONG).show();
+            }
+        });
+
+        school.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Get the selected item's text
+                String selectedItemText = parentView.getItemAtPosition(position).toString();
+                selectedSchool = selectedItemText;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         submit.setOnClickListener(view1 -> {
             first = String.valueOf(firstName.getText());
             middle = middleName.getText().toString();
@@ -67,82 +109,6 @@ public class PersonalDetails extends Fragment {
                 gender = "Female";
             }
 
-            course.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    // Get the selected item's text
-                    selectedCourse[0] = parentView.getItemAtPosition(position).toString();
-                    // If the selected item is empty, display a pop-up message
-                    if (selectedCourse[0].isEmpty()) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage("Please select an item from the spinner")
-                                .setCancelable(false)
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
-            department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    // Get the selected item's text
-                    selectedDepartment[0] = parentView.getItemAtPosition(position).toString();
-                    // If the selected item is empty, display a pop-up message
-                    if (selectedDepartment[0].isEmpty()) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage("Please select an item from the spinner")
-                                .setCancelable(false)
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
-            school.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    // Get the selected item's text
-                    selectedSchool[0] = parentView.getItemAtPosition(position).toString();
-                    // If the selected item is empty, display a pop-up message
-                    if (selectedSchool[0].isEmpty()) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage("Please select an item from the spinner")
-                                .setCancelable(false)
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                    }
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
             Map<String, String> student = new HashMap<>();
             student.put("firstName", first);
             student.put("middleName", middle);
@@ -150,10 +116,11 @@ public class PersonalDetails extends Fragment {
             student.put("idNumber",id);
             student.put("regNo", reg);
             student.put("gender",gender);
-            student.put("course", selectedCourse[0]);
-            student.put("department", selectedDepartment[0]);
-            student.put("school", selectedSchool[0]);
-            mDatabase.child("students").child("student").setValue(student);
+            student.put("course", selectedCourse);
+            student.put("department", selectedDepartment);
+            student.put("school", selectedSchool);
+            mDatabase.child("students").child(reg).setValue(student);
+            Toast.makeText(getContext(),"Success" , Toast.LENGTH_LONG).show();
         });
         return view;
     }
