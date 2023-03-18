@@ -9,11 +9,11 @@
         <item>Civil Engineering</item>
     </string-array>
     <string-array name="department_options" >
-
+        <item>School of CS and IT</item>
+        <item>Institute of IGGres</item>
     </string-array>
     <string-array name="school_options" >
         <item>School of Science</item>
-        <item>Institute of IGGres</item>
         <item>School of Engineering</item>
     </string-array>
     <string-array name="course_array" />

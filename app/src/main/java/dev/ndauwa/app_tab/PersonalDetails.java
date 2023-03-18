@@ -16,6 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class PersonalDetails extends Fragment {
     private EditText firstName;
@@ -29,41 +35,30 @@ public class PersonalDetails extends Fragment {
     private Spinner school;
     private Button submit;
     private Button cancel;
-
+    private String first;
+    private String middle;
+    private String last;
+    private String id;
+    private String reg;
+    private String gender;
+    final String[] selectedDepartment = {""};
+    final String[] selectedCourse = new String[1];
+    final String[] selectedSchool = {""};
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference mDatabase = database.getReference();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.personal, container, false);
         initialiseComponets(view);
-        return view;
-    }
-
-    private void initialiseComponets(View view) {
-        firstName = view.findViewById(R.id.editTextFirstName);
-        lastName = view.findViewById(R.id.editTextLastName);
-        middleName = view.findViewById(R.id.editTextMiddleName);
-        idNumber = view.findViewById(R.id.editTextIdNumber);
-        regNo =view.findViewById(R.id.editTextRegistrationNo);
-        genderRadioGroup = view.findViewById(R.id.gender_radio_group);
-        course = view.findViewById(R.id.course_spinner);
-        school = view.findViewById(R.id.school_spinner);
-        department = view.findViewById(R.id.department_spinner);
-        submit = view.findViewById(R.id.submit_button);
-        cancel = view.findViewById(R.id.cancel_button);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        submit.setOnClickListener(view -> {
-            String first = String.valueOf(firstName.getText());
-            String middle = middleName.getText().toString();
-            String last = lastName.getText().toString();
-            String id = idNumber.getText().toString();
-            String reg = regNo.getText().toString();
+        submit.setOnClickListener(view1 -> {
+            first = String.valueOf(firstName.getText());
+            middle = middleName.getText().toString();
+            last = lastName.getText().toString();
+            id = idNumber.getText().toString();
+            reg = regNo.getText().toString();
             int selectedId = genderRadioGroup.getCheckedRadioButtonId();
-            String gender;
             if (selectedId == R.id.male_radio_button) {
                 // Male option is selected
                 gender = "Male";
@@ -71,7 +66,7 @@ public class PersonalDetails extends Fragment {
                 // Female option is selected
                 gender = "Female";
             }
-            final String[] selectedCourse = {""};
+
             course.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -97,7 +92,7 @@ public class PersonalDetails extends Fragment {
 
                 }
             });
-            final String[] selectedDepartment = {""};
+
             department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -123,7 +118,7 @@ public class PersonalDetails extends Fragment {
 
                 }
             });
-            final String[] selectedSchool = {""};
+
             school.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -143,12 +138,43 @@ public class PersonalDetails extends Fragment {
                         alert.show();
                     }
                 }
-
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
 
                 }
             });
+            Map<String, String> student = new HashMap<>();
+            student.put("firstName", first);
+            student.put("middleName", middle);
+            student.put("lastName", last);
+            student.put("idNumber",id);
+            student.put("regNo", reg);
+            student.put("gender",gender);
+            student.put("course", selectedCourse[0]);
+            student.put("department", selectedDepartment[0]);
+            student.put("school", selectedSchool[0]);
+            mDatabase.child("students").child("student").setValue(student);
         });
+        return view;
+    }
+
+    private void initialiseComponets(View view) {
+        submit = view.findViewById(R.id.submit_button);
+        firstName = view.findViewById(R.id.editTextFirstName);
+        lastName = view.findViewById(R.id.editTextLastName);
+        middleName = view.findViewById(R.id.editTextMiddleName);
+        idNumber = view.findViewById(R.id.editTextIdNumber);
+        regNo =view.findViewById(R.id.editTextRegistrationNo);
+        genderRadioGroup = view.findViewById(R.id.gender_radio_group);
+        course = view.findViewById(R.id.course_spinner);
+        school = view.findViewById(R.id.school_spinner);
+        department = view.findViewById(R.id.department_spinner);
+        cancel = view.findViewById(R.id.cancel_button);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 }
