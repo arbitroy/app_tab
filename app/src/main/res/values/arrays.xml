@@ -5,16 +5,29 @@
         <item>IT</item>
         <item>GeGIS</item>
         <item>GIS</item>
-        <item>Mechatronics</item>
+        <item>Chemical Engineering</item>
+        <item>Mechatronic Engineering</item>
+        <item>Mechanical Engineering</item>
+        <item>Industrial Chemistry</item>
+        <item>Acturial Science</item>
         <item>Civil Engineering</item>
     </string-array>
     <string-array name="department_options" >
-        <item>School of CS and IT</item>
-        <item>Institute of IGGres</item>
+        <item>CS</item>
+        <item>IT</item>
+        <item>Statistics and Acturial Sciences</item>
+        <item>Mechanical Engineering</item>
+        <item>Mechatronic Engineering</item>
+        <item>Chemical Engineering</item>
+        <item>Civil Engineering</item>
+        <item>Maths and Physical Science</item>
+        <item>Chemistry</item>
+
     </string-array>
     <string-array name="school_options" >
         <item>School of Science</item>
         <item>School of Engineering</item>
+        <item>Institute of IGGres</item>
     </string-array>
     <string-array name="course_array" />
     <string-array name="year_array" >

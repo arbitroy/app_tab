@@ -1,19 +1,22 @@
 package dev.ndauwa.app_tab.ui.main;
 
-import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 public class PageViewModel extends ViewModel {
 
-    private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
+    private final MutableLiveData<String> courses = new MutableLiveData<>();
 
-
-    public void setIndex(int index) {
-        mIndex.setValue(index);
+    @Override
+    public String toString() {
+        return courses.getValue();
     }
 
-
+    public LiveData getCourse() {
+        return courses;
+    }
+    public void addCourse(String course) {
+        courses.setValue(course);
+    }
 }

@@ -1,29 +1,27 @@
 package dev.ndauwa.app_tab;
 
-import android.content.DialogInterface;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
+
+import dev.ndauwa.app_tab.ui.main.PageViewModel;
 
 
 public class PersonalDetails extends Fragment {
@@ -47,6 +45,7 @@ public class PersonalDetails extends Fragment {
     private String selectedDepartment;
     private String selectedCourse;
     private String selectedSchool;
+    private PageViewModel viewModel;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase = database.getReference();
     @Nullable
@@ -55,12 +54,14 @@ public class PersonalDetails extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.personal, container, false);
         initialiseComponets(view);
+        viewModel = new ViewModelProvider(requireActivity()).get(PageViewModel.class);
         course.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Get the selected item's text
                 String selectedItemText = parentView.getItemAtPosition(position).toString();
                 selectedCourse = selectedItemText;
+                viewModel.addCourse(selectedCourse);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -94,6 +95,17 @@ public class PersonalDetails extends Fragment {
 
             }
         });
+        cancel.setOnClickListener(veiw2 ->{
+            firstName.setText("");
+            middleName.setText("");
+            lastName.setText("");
+            idNumber.setText("");
+            regNo.setText("");
+            genderRadioGroup.clearCheck();
+            course.setSelected(false);
+            school.setSelected(false);
+            department.setSelected(false);
+        });
         submit.setOnClickListener(view1 -> {
             first = String.valueOf(firstName.getText());
             middle = middleName.getText().toString();
@@ -108,7 +120,6 @@ public class PersonalDetails extends Fragment {
                 // Female option is selected
                 gender = "Female";
             }
-
             Map<String, String> student = new HashMap<>();
             student.put("firstName", first);
             student.put("middleName", middle);
@@ -119,12 +130,15 @@ public class PersonalDetails extends Fragment {
             student.put("course", selectedCourse);
             student.put("department", selectedDepartment);
             student.put("school", selectedSchool);
+
             mDatabase.child("students").child(reg).setValue(student);
             Toast.makeText(getContext(),"Success" , Toast.LENGTH_LONG).show();
         });
         return view;
     }
-
+    public String getCourse() {
+        return selectedCourse;
+    }
     private void initialiseComponets(View view) {
         submit = view.findViewById(R.id.submit_button);
         firstName = view.findViewById(R.id.editTextFirstName);
@@ -139,9 +153,4 @@ public class PersonalDetails extends Fragment {
         cancel = view.findViewById(R.id.cancel_button);
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 }
