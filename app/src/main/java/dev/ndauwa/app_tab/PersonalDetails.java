@@ -136,9 +136,7 @@ public class PersonalDetails extends Fragment {
         });
         return view;
     }
-    public String getCourse() {
-        return selectedCourse;
-    }
+
     private void initialiseComponets(View view) {
         submit = view.findViewById(R.id.submit_button);
         firstName = view.findViewById(R.id.editTextFirstName);

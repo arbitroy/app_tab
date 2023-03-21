@@ -73,7 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:stretchColumns="1">
+        android:stretchColumns="1"
+        android:id="@+id/course_table">
 
         <TableRow>
 
@@ -81,11 +82,6 @@
                 android:layout_width="84dp"
                 android:layout_height="wrap_content"
                 android:text="Unit Code" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Unit Name" />
         </TableRow>
 
         <TableRow>
@@ -94,10 +90,7 @@
                 android:layout_height="wrap_content"
                 android:text="CS101" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Introduction to Computer Science" />
+
         </TableRow>
 
         <TableRow>
@@ -106,10 +99,6 @@
                 android:layout_height="wrap_content"
                 android:text="CS102" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Data Structures and Algorithms" />
         </TableRow>
 
         <TableRow>
@@ -117,11 +106,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CS201" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Computer Networks" />
         </TableRow>
 
         <TableRow>
@@ -130,10 +114,6 @@
                 android:layout_height="wrap_content"
                 android:text="CS202" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Database Systems" />
         </TableRow>
 
     </TableLayout>
