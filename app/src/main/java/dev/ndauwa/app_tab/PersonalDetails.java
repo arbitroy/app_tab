@@ -102,9 +102,10 @@ public class PersonalDetails extends Fragment {
             idNumber.setText("");
             regNo.setText("");
             genderRadioGroup.clearCheck();
-            course.setSelected(false);
-            school.setSelected(false);
-            department.setSelected(false);
+            course.setSelection(0);
+            school.setSelection(0);
+            department.setSelection(0);
+            viewModel.removeStudent();
         });
         submit.setOnClickListener(view1 -> {
             first = String.valueOf(firstName.getText());
@@ -120,19 +121,18 @@ public class PersonalDetails extends Fragment {
                 // Female option is selected
                 gender = "Female";
             }
-            Map<String, String> student = new HashMap<>();
-            student.put("firstName", first);
-            student.put("middleName", middle);
-            student.put("lastName", last);
-            student.put("idNumber",id);
-            student.put("regNo", reg);
-            student.put("gender",gender);
-            student.put("course", selectedCourse);
-            student.put("department", selectedDepartment);
-            student.put("school", selectedSchool);
-
-            mDatabase.child("students").child(reg).setValue(student);
-            Toast.makeText(getContext(),"Success" , Toast.LENGTH_LONG).show();
+            Student student = new Student(first,middle,last,id,reg,gender,selectedDepartment,selectedCourse,selectedSchool);
+            viewModel.addStudent(student);
+            firstName.setText("");
+            middleName.setText("");
+            lastName.setText("");
+            idNumber.setText("");
+            regNo.setText("");
+            genderRadioGroup.clearCheck();
+            course.setSelection(0);
+            school.setSelection(0);
+            department.setSelection(0);
+            Toast.makeText(getContext(), "Proceed to enter the course details", Toast.LENGTH_LONG);
         });
         return view;
     }
@@ -149,6 +149,7 @@ public class PersonalDetails extends Fragment {
         school = view.findViewById(R.id.school_spinner);
         department = view.findViewById(R.id.department_spinner);
         cancel = view.findViewById(R.id.cancel_button);
+
     }
 
 }

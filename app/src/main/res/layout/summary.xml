@@ -7,95 +7,188 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/name_textview"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Name"
+        android:layout_marginBottom="6dp"
+        android:text="Name :"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/reg_number_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+    <TextView
+        android:id="@+id/name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/reg_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:text="Registration Number :"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/reg_number_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Registration Number"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/id_number_textview"
+        android:id="@+id/id_number"
         android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="ID Number"
+        android:layout_marginBottom="6dp"
+        android:text="ID Number :"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+    <TextView
+        android:id="@+id/id_number_textview"
+        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="6dp"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:text="Department :"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/department_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Department"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+    <TextView
+        android:id="@+id/course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:text="Course :"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/course_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Course"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/year_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Year"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:text="Year :"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/sem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
+        android:text="Semester :"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/sem_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Semester"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="6dp"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
     <TableLayout
         android:layout_width="match_parent"
+        android:id="@+id/course_table"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:stretchColumns="1">
-
         <TableRow>
 
             <TextView
@@ -107,54 +200,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Unit Name" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CS101" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Introduction to Computer Science" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CS102" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Data Structures and Algorithms" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CS201" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Computer Networks" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CS202" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Database Systems" />
         </TableRow>
 
     </TableLayout>
