@@ -105,9 +105,10 @@ public class CourseDetails extends Fragment {
        });
 
         save.setOnClickListener(view1 -> {
-            Student student = viewModel.getStudents();
+            Student student = viewModel.getStudents().getValue();
             student.setYear("Year "+yr);
             student.setSemester("Semester "+sem);
+            viewModel.addStudent(student);
             String reg = student.getReg();
             mDatabase.child("students").child(reg).setValue(student);
             Toast.makeText(getContext(),"success",Toast.LENGTH_LONG).show();

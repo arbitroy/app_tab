@@ -129,10 +129,9 @@ public class PersonalDetails extends Fragment {
             idNumber.setText("");
             regNo.setText("");
             genderRadioGroup.clearCheck();
-            course.setSelection(0);
             school.setSelection(0);
             department.setSelection(0);
-            Toast.makeText(getContext(), "Proceed to enter the course details", Toast.LENGTH_LONG);
+            Toast.makeText(getContext(), "Proceed to enter the course details", Toast.LENGTH_LONG).show();
         });
         return view;
     }

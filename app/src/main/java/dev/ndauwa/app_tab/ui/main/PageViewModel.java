@@ -18,8 +18,8 @@ public class PageViewModel extends ViewModel {
     public String toString() {
         return courses.getValue();
     }
-    public Student getStudents() {
-        return students.getValue();
+    public LiveData<Student> getStudents() {
+        return students;
     }
     public LiveData getCourse() {
         return courses;

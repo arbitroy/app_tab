@@ -1,17 +1,17 @@
 package dev.ndauwa.app_tab;
 
 public class Student {
-    private String first;
-    private String middle;
-    private String last;
-    private String id;
-    private String reg;
-    private String gender;
-    private String selectedDepartment ;
-    private String selectedCourse ;
-    private String selectedSchool;
-    private String year;
-    private String semester;
+    private String first = "";
+    private String middle = "";
+    private String last = "";
+    private String id = "";
+    private String reg = "";
+    private String gender = "";
+    private String selectedDepartment = "";
+    private String selectedCourse = "";
+    private String selectedSchool = "";
+    private String year = "1";
+    private String semester = "1";
 
     public Student(String first, String middle, String last, String id, String reg, String gender, String selectedDepartment, String selectedCourse, String selectedSchool) {
         this.first = first;
@@ -129,5 +129,20 @@ public class Student {
         this.semester = semester;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "first='" + first + '\'' +
+                ", middle='" + middle + '\'' +
+                ", last='" + last + '\'' +
+                ", id='" + id + '\'' +
+                ", reg='" + reg + '\'' +
+                ", gender='" + gender + '\'' +
+                ", selectedDepartment='" + selectedDepartment + '\'' +
+                ", selectedCourse='" + selectedCourse + '\'' +
+                ", selectedSchool='" + selectedSchool + '\'' +
+                ", year='" + year + '\'' +
+                ", semester='" + semester + '\'' +
+                '}';
+    }
 }
